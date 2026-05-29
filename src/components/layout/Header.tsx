@@ -30,6 +30,32 @@ const navLinkClass =
 const mobileNavLinkClass =
   'font-display text-4xl text-cream hover:text-neon-dim transition-colors block bg-transparent border-0 p-0 cursor-pointer text-left w-full'
 
+const drawerEase = [0.22, 1, 0.36, 1] as const
+
+const overlayTransition = {
+  duration: 0.45,
+  ease: drawerEase,
+}
+
+const drawerTransition = {
+  type: 'tween' as const,
+  duration: 0.55,
+  ease: drawerEase,
+}
+
+const drawerExitTransition = {
+  type: 'tween' as const,
+  duration: 0.48,
+  ease: [0.4, 0, 0.2, 1] as const,
+}
+
+const navItemTransition = (index: number) => ({
+  type: 'tween' as const,
+  duration: 0.42,
+  ease: drawerEase,
+  delay: 0.18 + index * 0.08,
+})
+
 export function Header() {
   const scrolled = useScrollPosition(40)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -114,38 +140,47 @@ export function Header() {
         </div>
       </header>
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={overlayTransition}
             className="fixed inset-0 z-40 lg:hidden"
           >
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={overlayTransition}
               className="absolute inset-0 bg-void/60 backdrop-blur-sm"
               onClick={() => setMenuOpen(false)}
             />
             <motion.nav
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-void border-l border-stone shadow-2xl p-8 pt-20 flex flex-col gap-6"
+              exit={{ x: '100%', transition: drawerExitTransition }}
+              transition={drawerTransition}
+              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-void border-l border-stone shadow-2xl p-8 pt-20 flex flex-col gap-6 will-change-transform"
             >
-              <div className="flex justify-center pb-4 border-b border-stone">
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 8 }}
+                transition={{ ...overlayTransition, delay: 0.12 }}
+                className="flex justify-center pb-4 border-b border-stone"
+              >
                 <Logo size="md" />
-              </div>
+              </motion.div>
               {NAV_LINKS.map((link, i) =>
                 isRouteLink(link) ? (
                   <motion.div
                     key={link.label}
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 28 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    exit={{ opacity: 0, x: 16 }}
+                    transition={navItemTransition(i)}
                   >
                     <Link
                       to={link.to}
@@ -158,9 +193,10 @@ export function Header() {
                 ) : (
                   <motion.div
                     key={link.label}
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 28 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    exit={{ opacity: 0, x: 16 }}
+                    transition={navItemTransition(i)}
                   >
                     <button
                       type="button"
@@ -172,7 +208,16 @@ export function Header() {
                   </motion.div>
                 ),
               )}
-              <div className="mt-auto pt-8 border-t border-stone">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{
+                  ...overlayTransition,
+                  delay: 0.18 + NAV_LINKS.length * 0.08,
+                }}
+                className="mt-auto pt-8 border-t border-stone"
+              >
                 <Button
                   href={SITE.bookingUrl}
                   className="w-full justify-center"
@@ -180,7 +225,7 @@ export function Header() {
                 >
                   Book Appointment
                 </Button>
-              </div>
+              </motion.div>
             </motion.nav>
           </motion.div>
         )}
