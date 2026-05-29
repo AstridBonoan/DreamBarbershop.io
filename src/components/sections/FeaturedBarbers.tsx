@@ -19,7 +19,7 @@ export function FeaturedBarbers() {
           {BARBERS_APPOINTMENT_NOTE}
         </p>
 
-        <div className="flex gap-5 overflow-x-auto pb-4 -mx-5 px-5 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 scrollbar-hide snap-x snap-mandatory">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {BARBERS.map((barber, index) => (
             <motion.article
               key={barber.id}
@@ -27,17 +27,17 @@ export function FeaturedBarbers() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group shrink-0 w-[280px] md:w-auto snap-center"
+              className="group w-full"
             >
-              <div className="relative overflow-hidden aspect-[3/4] bg-slate card-elevated">
+              <div className="relative overflow-hidden aspect-[3/4] sm:aspect-[3/4] bg-slate card-elevated">
                 <BarberPhoto src={barber.image} name={barber.name} />
                 <div className="absolute inset-0 bg-linear-to-t from-void/90 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5">
                   <span className="text-muted text-xs font-heading tracking-[0.2em] uppercase">
                     {barber.role}
                   </span>
-                  <h3 className="font-display text-3xl text-cream mt-1">{barber.name}</h3>
-                  <p className="text-silver text-sm mt-1">{barber.specialty}</p>
+                  <h3 className="font-display text-2xl sm:text-3xl text-cream mt-1">{barber.name}</h3>
+                  <p className="text-silver text-xs sm:text-sm mt-1 line-clamp-2">{barber.specialty}</p>
                 </div>
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                   {barber.instagram && (
