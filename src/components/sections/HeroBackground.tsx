@@ -22,10 +22,10 @@ export function HeroBackground() {
   const handleVideoError = useCallback(() => setUseFallback(true), [])
 
   return (
-    <motion.div ref={ref} style={{ y, scale }} className="absolute inset-0 overflow-hidden bg-black">
+    <motion.div ref={ref} style={{ y, scale }} className="absolute inset-0 overflow-hidden bg-void">
       {!useFallback ? (
         <video
-          className="hero-video absolute inset-0 h-full w-full object-cover"
+          className="hero-video-light absolute inset-0 h-full w-full object-cover"
           autoPlay
           muted
           loop
@@ -41,30 +41,18 @@ export function HeroBackground() {
         <img
           src={FALLBACK_IMAGE}
           alt=""
-          className="hero-video absolute inset-0 h-full w-full object-cover"
+          className="hero-video-light absolute inset-0 h-full w-full object-cover"
         />
       )}
 
-      {/* Light cinematic grade — video stays vivid */}
-      <div className="absolute inset-0 bg-black/15 pointer-events-none" />
+      {/* Soft white wash — lighter than before so video reads through */}
+      <div className="absolute inset-0 bg-void/45 pointer-events-none" />
 
-      {/* Left scrim for readable copy */}
-      <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/45 to-black/10 pointer-events-none" />
+      {/* Stronger white on left for text; right stays more open */}
+      <div className="absolute inset-0 bg-linear-to-r from-void/85 via-void/50 to-void/15 pointer-events-none" />
 
-      {/* Bottom fade */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/25 to-transparent pointer-events-none" />
-
-      {/* Edge vignette */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 90% 80% at 50% 50%, transparent 40%, rgba(0,0,0,0.45) 100%)',
-        }}
-      />
-
-      {/* Subtle neon brand tint at bottom */}
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-neon/10 to-transparent pointer-events-none" />
+      {/* Bottom anchor — keeps bright feel */}
+      <div className="absolute inset-0 bg-linear-to-t from-void via-void/35 to-void/10 pointer-events-none" />
     </motion.div>
   )
 }

@@ -31,7 +31,7 @@ export function Header() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
             ? 'bg-void/95 backdrop-blur-xl border-b border-stone py-2 shadow-sm'
-            : 'bg-linear-to-b from-black/60 to-transparent backdrop-blur-sm py-3 md:py-4'
+            : 'bg-void/85 backdrop-blur-md py-3 md:py-4'
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
@@ -47,11 +47,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`font-heading text-xs tracking-[0.2em] uppercase transition-colors ${
-                  scrolled
-                    ? 'text-silver hover:text-neon-dim'
-                    : 'text-white/90 hover:text-neon'
-                }`}
+                className="font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-neon-dim transition-colors"
               >
                 {link.label}
               </a>
@@ -67,9 +63,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`lg:hidden p-2 transition-colors ${
-              scrolled ? 'text-cream hover:text-neon-dim' : 'text-white hover:text-neon'
-            }`}
+            className="lg:hidden p-2 text-cream hover:text-neon-dim transition-colors"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
