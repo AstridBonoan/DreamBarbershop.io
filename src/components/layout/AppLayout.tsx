@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { scrollToSectionWhenReady } from '../../utils/scrollToSection'
+import { BonoanLabsWatermark } from './BonoanLabsWatermark'
 import { Footer } from './Footer'
 import { Header } from './Header'
 import { MobileBookingCTA } from './MobileBookingCTA'
@@ -31,6 +32,7 @@ export function AppLayout() {
       </main>
       <Footer />
       <MobileBookingCTA />
+      <BonoanLabsWatermark />
     </>
   )
 }

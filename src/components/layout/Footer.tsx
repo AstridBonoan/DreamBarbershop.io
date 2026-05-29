@@ -91,9 +91,22 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-stone flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-muted">
-          <p>© {year} {SITE.fullName}. All rights reserved.</p>
-          <p className="tracking-widest uppercase">Elmhurst · Queens · NY</p>
+        <div className="mt-16 pt-8 border-t border-stone flex flex-col gap-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-muted">
+            <p>© {year} {SITE.fullName}. All rights reserved.</p>
+            <p className="tracking-widest uppercase">Elmhurst · Queens · NY</p>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-2 pt-2 border-t border-stone/50">
+            <span className="text-[10px] tracking-[0.2em] uppercase text-muted">Site by</span>
+            <img
+              src={`${import.meta.env.BASE_URL}bonoan-labs-watermark.png`}
+              alt="Bonoan Labs"
+              width={140}
+              height={38}
+              className="h-6 w-auto opacity-70"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </footer>
