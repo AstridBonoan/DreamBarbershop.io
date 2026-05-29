@@ -5,6 +5,7 @@ interface SectionHeadingProps {
   title: string
   description?: string
   align?: 'left' | 'center'
+  className?: string
 }
 
 export function SectionHeading({
@@ -12,6 +13,7 @@ export function SectionHeading({
   title,
   description,
   align = 'left',
+  className = '',
 }: SectionHeadingProps) {
   const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left'
 
@@ -21,7 +23,7 @@ export function SectionHeading({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`max-w-2xl mb-12 md:mb-16 ${alignClass}`}
+      className={`max-w-2xl mb-12 md:mb-16 ${alignClass} ${className}`}
     >
       <span className="block font-heading text-xs md:text-sm tracking-[0.35em] uppercase text-neon-dim mb-3">
         {label}

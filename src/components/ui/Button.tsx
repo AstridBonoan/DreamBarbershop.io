@@ -1,5 +1,6 @@
 import { motion, type HTMLMotionProps } from 'framer-motion'
 import type { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 
 type Variant = 'primary' | 'secondary' | 'ghost' | 'outline'
 
@@ -8,6 +9,7 @@ interface ButtonProps extends Omit<HTMLMotionProps<'a'>, 'children'> {
   variant?: Variant
   size?: 'sm' | 'md' | 'lg'
   href?: string
+  to?: string
 }
 
 const variants: Record<Variant, string> = {
@@ -32,8 +34,21 @@ export function Button({
   size = 'md',
   className = '',
   href = '#',
+  to,
   ...props
 }: ButtonProps) {
+  const classes = `inline-flex items-center justify-center gap-2 font-heading font-semibold uppercase transition-colors duration-300 ${variants[variant]} ${sizes[size]} ${className}`
+
+  if (to) {
+    return (
+      <motion.div whileHover={{ scale: 1.02, y: -1 }} whileTap={{ scale: 0.98 }} className="inline-block">
+        <Link to={to} className={classes} {...(props as object)}>
+          {children}
+        </Link>
+      </motion.div>
+    )
+  }
+
   return (
     <motion.a
       href={href}
@@ -41,7 +56,7 @@ export function Button({
       rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
       whileHover={{ scale: 1.02, y: -1 }}
       whileTap={{ scale: 0.98 }}
-      className={`inline-flex items-center justify-center gap-2 font-heading font-semibold uppercase transition-colors duration-300 ${variants[variant]} ${sizes[size]} ${className}`}
+      className={classes}
       {...props}
     >
       {children}

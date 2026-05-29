@@ -1,22 +1,32 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { SITE } from '../../data/site'
 import { useScrollPosition } from '../../hooks/useScrollPosition'
 import { Button } from '../ui/Button'
 import { Logo } from '../ui/Logo'
 
-const NAV_LINKS = [
-  { label: 'Barbers', href: '#barbers' },
-  { label: 'Services', href: '#services' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'About', href: '#about' },
-  { label: 'Reviews', href: '#reviews' },
+type NavLink =
+  | { label: string; href: string }
+  | { label: string; to: string }
+
+const NAV_LINKS: NavLink[] = [
+  { label: 'Barbers', href: '/#barbers' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Gallery', to: '/gallery' },
+  { label: 'About', href: '/#about' },
+  { label: 'Reviews', href: '/#reviews' },
 ]
+
+function isRouteLink(link: NavLink): link is { label: string; to: string } {
+  return 'to' in link
+}
 
 export function Header() {
   const scrolled = useScrollPosition(40)
   const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -35,23 +45,35 @@ export function Header() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
-          <a href="#" className="group flex items-center gap-3 shrink-0">
+          <Link to="/" className="group flex items-center gap-3 shrink-0">
             <Logo size="sm" className="transition-transform group-hover:scale-105" />
             <span className="hidden md:block font-script text-lg text-cream -mt-1 opacity-90">
               Barbershop & Salon
             </span>
-          </a>
+          </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-neon-dim transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) =>
+              isRouteLink(link) ? (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  className={`font-heading text-xs tracking-[0.2em] uppercase transition-colors ${
+                    location.pathname === link.to ? 'text-neon-dim' : 'text-silver hover:text-neon-dim'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-neon-dim transition-colors"
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
           </nav>
 
           <div className="hidden lg:block">
@@ -96,19 +118,36 @@ export function Header() {
               <div className="flex justify-center pb-4 border-b border-stone">
                 <Logo size="md" />
               </div>
-              {NAV_LINKS.map((link, i) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="font-display text-4xl text-cream hover:text-neon-dim transition-colors"
-                >
-                  {link.label}
-                </motion.a>
-              ))}
+              {NAV_LINKS.map((link, i) =>
+                isRouteLink(link) ? (
+                  <motion.div
+                    key={link.label}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                  >
+                    <Link
+                      to={link.to}
+                      onClick={() => setMenuOpen(false)}
+                      className="font-display text-4xl text-cream hover:text-neon-dim transition-colors block"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className="font-display text-4xl text-cream hover:text-neon-dim transition-colors"
+                  >
+                    {link.label}
+                  </motion.a>
+                ),
+              )}
               <div className="mt-auto pt-8 border-t border-stone">
                 <Button
                   href={SITE.bookingUrl}
