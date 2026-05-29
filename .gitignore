@@ -14,6 +14,7 @@ dist-ssr
 square-*.html
 scripts/parse-square.py
 scripts/check-images.py
+scripts/export-gallery.py
 
 # Editor directories and files
 .vscode/*

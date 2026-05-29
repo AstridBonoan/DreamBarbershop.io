@@ -12,7 +12,7 @@ export function Gallery() {
           <SectionHeading
             label="Portfolio"
             title="FROM THE FEED"
-            description="Fresh work, shop energy, and transformations — follow us for daily cuts."
+            description="Real cuts and shop moments from @dreambarbershopandsalon."
           />
           <a
             href={SITE.instagram}
@@ -32,19 +32,25 @@ export function Gallery() {
               href={SITE.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="group block break-inside-avoid relative overflow-hidden bg-slate"
+              transition={{ duration: 0.45, delay: index * 0.04 }}
+              className="group block break-inside-avoid relative overflow-hidden bg-charcoal rounded-sm"
             >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-void/0 group-hover:bg-void/20 transition-colors duration-500 flex items-center justify-center">
+              <picture>
+                <source type="image/webp" srcSet={image.webp} />
+                <img
+                  src={image.src}
+                  width={image.width}
+                  height={image.height}
+                  alt={image.alt}
+                  className="w-full h-auto block"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+              <div className="absolute inset-0 bg-void/0 group-hover:bg-void/25 transition-colors duration-500 flex items-center justify-center pointer-events-none">
                 <InstagramIcon
                   size={28}
                   className="text-cream opacity-0 group-hover:opacity-100 transition-opacity scale-90 group-hover:scale-100 duration-300 drop-shadow-md"
