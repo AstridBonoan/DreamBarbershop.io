@@ -1,15 +1,22 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { scrollToSectionWhenReady } from '../../utils/scrollToSection'
 import { Footer } from './Footer'
 import { Header } from './Header'
 import { MobileBookingCTA } from './MobileBookingCTA'
 
-function ScrollToTop() {
-  const { pathname } = useLocation()
+function ScrollManager() {
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
+    if (hash) {
+      const id = hash.replace(/^#/, '')
+      scrollToSectionWhenReady(id)
+      return
+    }
+
     window.scrollTo(0, 0)
-  }, [pathname])
+  }, [pathname, hash])
 
   return null
 }
@@ -17,7 +24,7 @@ function ScrollToTop() {
 export function AppLayout() {
   return (
     <>
-      <ScrollToTop />
+      <ScrollManager />
       <Header />
       <main>
         <Outlet />

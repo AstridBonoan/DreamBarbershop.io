@@ -30,6 +30,10 @@
     scroll-behavior: smooth;
   }
 
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+
   body {
     @apply bg-void text-cream font-body antialiased overflow-x-hidden;
   }

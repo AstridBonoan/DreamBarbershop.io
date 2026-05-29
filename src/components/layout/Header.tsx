@@ -1,7 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { scrollToSection } from '../../utils/scrollToSection'
 import { SITE } from '../../data/site'
 import { useScrollPosition } from '../../hooks/useScrollPosition'
 import { Button } from '../ui/Button'
@@ -33,6 +34,19 @@ export function Header() {
   const scrolled = useScrollPosition(40)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
+
+  function goToSection(hash: string) {
+    setMenuOpen(false)
+    const target = `#${hash}`
+
+    if (location.pathname === '/' && location.hash === target) {
+      scrollToSection(hash)
+      return
+    }
+
+    navigate({ pathname: '/', hash: target })
+  }
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -71,13 +85,14 @@ export function Header() {
                   {link.label}
                 </Link>
               ) : (
-                <Link
+                <button
                   key={link.label}
-                  to={{ pathname: '/', hash: `#${link.hash}` }}
+                  type="button"
+                  onClick={() => goToSection(link.hash)}
                   className={navLinkClass}
                 >
                   {link.label}
-                </Link>
+                </button>
               ),
             )}
           </nav>
@@ -147,13 +162,13 @@ export function Header() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
                   >
-                    <Link
-                      to={{ pathname: '/', hash: `#${link.hash}` }}
-                      onClick={() => setMenuOpen(false)}
+                    <button
+                      type="button"
+                      onClick={() => goToSection(link.hash)}
                       className={mobileNavLinkClass}
                     >
                       {link.label}
-                    </Link>
+                    </button>
                   </motion.div>
                 ),
               )}
