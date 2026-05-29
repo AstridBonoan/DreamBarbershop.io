@@ -1,4 +1,4 @@
-const LOGO_SRC = `${import.meta.env.BASE_URL}logo.png`
+const LOGO_SRC = `${import.meta.env.BASE_URL}logo.png?v=3`
 
 interface LogoProps {
   className?: string
@@ -14,12 +14,16 @@ const heights: Record<NonNullable<LogoProps['size']>, string> = {
 
 export function Logo({ className = '', size = 'md' }: LogoProps) {
   return (
-    <img
-      src={LOGO_SRC}
-      alt="DREAM Barbershop & Salon"
-      width={160}
-      height={160}
-      className={`object-contain ${heights[size]} ${className}`}
-    />
+    <div
+      className={`shrink-0 overflow-hidden rounded-full ${heights[size]} ${className}`}
+    >
+      <img
+        src={LOGO_SRC}
+        alt="DREAM Barbershop & Salon"
+        width={160}
+        height={160}
+        className="h-full w-full object-cover"
+      />
+    </div>
   )
 }

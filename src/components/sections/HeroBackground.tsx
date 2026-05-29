@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useCallback, useRef, useState } from 'react'
 import { SITE } from '../../data/site'
 
-const POSTER = `${import.meta.env.BASE_URL}logo.png`
+const POSTER = `${import.meta.env.BASE_URL}logo.png?v=3`
 const VIDEO_SRC = `${import.meta.env.BASE_URL}${SITE.heroVideo}`
 
 const FALLBACK_IMAGE =
