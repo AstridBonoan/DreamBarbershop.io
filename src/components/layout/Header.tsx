@@ -8,20 +8,26 @@ import { Button } from '../ui/Button'
 import { Logo } from '../ui/Logo'
 
 type NavLink =
-  | { label: string; href: string }
+  | { label: string; hash: string }
   | { label: string; to: string }
 
 const NAV_LINKS: NavLink[] = [
-  { label: 'Barbers', href: '/#barbers' },
-  { label: 'Services', href: '/#services' },
-  { label: 'About', href: '/#about' },
-  { label: 'Reviews', href: '/#reviews' },
+  { label: 'Barbers', hash: 'barbers' },
+  { label: 'Services', hash: 'services' },
+  { label: 'About', hash: 'about' },
+  { label: 'Reviews', hash: 'reviews' },
   { label: 'Gallery', to: '/gallery' },
 ]
 
 function isRouteLink(link: NavLink): link is { label: string; to: string } {
   return 'to' in link
 }
+
+const navLinkClass =
+  'font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-neon-dim transition-colors'
+
+const mobileNavLinkClass =
+  'font-display text-4xl text-cream hover:text-neon-dim transition-colors block'
 
 export function Header() {
   const scrolled = useScrollPosition(40)
@@ -65,13 +71,13 @@ export function Header() {
                   {link.label}
                 </Link>
               ) : (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
-                  className="font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-neon-dim transition-colors"
+                  to={{ pathname: '/', hash: `#${link.hash}` }}
+                  className={navLinkClass}
                 >
                   {link.label}
-                </a>
+                </Link>
               ),
             )}
           </nav>
@@ -135,17 +141,20 @@ export function Header() {
                     </Link>
                   </motion.div>
                 ) : (
-                  <motion.a
+                  <motion.div
                     key={link.label}
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className="font-display text-4xl text-cream hover:text-neon-dim transition-colors"
                   >
-                    {link.label}
-                  </motion.a>
+                    <Link
+                      to={{ pathname: '/', hash: `#${link.hash}` }}
+                      onClick={() => setMenuOpen(false)}
+                      className={mobileNavLinkClass}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
                 ),
               )}
               <div className="mt-auto pt-8 border-t border-stone">
