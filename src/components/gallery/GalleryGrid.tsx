@@ -3,11 +3,11 @@ import type { GalleryImage } from '../../data/gallery'
 
 interface GalleryGridProps {
   images: GalleryImage[]
-  columns?: 'compact' | 'full'
+  columns?: 'preview' | 'full'
 }
 
 const columnClasses = {
-  compact: 'grid-cols-3 sm:grid-cols-6 gap-1.5 sm:gap-2 max-w-2xl',
+  preview: 'grid-cols-5 gap-1.5 sm:gap-2 max-w-3xl',
   full: 'grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 md:gap-2.5 max-w-5xl',
 }
 

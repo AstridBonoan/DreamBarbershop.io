@@ -183,3 +183,11 @@ export const GALLERY: GalleryImage[] = [
     span: 'tall',
   },
 ]
+
+/** Featured on the home page From The Feed preview (matches Instagram highlights). */
+const HOME_FEED_PREVIEW_IDS = ['feed-01', 'feed-02', 'feed-03', 'feed-04', 'feed-05'] as const
+
+export const HOME_FEED_PREVIEW: GalleryImage[] = HOME_FEED_PREVIEW_IDS.flatMap((id) => {
+  const image = GALLERY.find((item) => item.id === id)
+  return image ? [image] : []
+})

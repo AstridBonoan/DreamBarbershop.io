@@ -1,12 +1,9 @@
-import { GALLERY } from '../../data/gallery'
+import { HOME_FEED_PREVIEW } from '../../data/gallery'
 import { GalleryGrid } from '../gallery/GalleryGrid'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Button } from '../ui/Button'
 
-const PREVIEW_COUNT = 6
-
 export function GalleryPreview() {
-  const preview = GALLERY.slice(0, PREVIEW_COUNT)
 
   return (
     <section id="gallery" className="py-16 md:py-24 section-muted relative overflow-hidden">
@@ -19,7 +16,7 @@ export function GalleryPreview() {
             align="center"
             className="!mb-0"
           />
-          <GalleryGrid images={preview} columns="compact" />
+          <GalleryGrid images={HOME_FEED_PREVIEW} columns="preview" />
           <Button to="/gallery" variant="secondary" size="md">
             View full gallery
           </Button>
