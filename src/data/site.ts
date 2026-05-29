@@ -9,6 +9,8 @@ export const SITE = {
   phone: '(718) 606-9955',
   email: 'dreambarbershopandsalon@gmail.com',
   bookingUrl: 'https://www.instagram.com/dreambarbershopandsalon/',
+  heroVideo: 'hero.mp4',
+  heroInstagramTv: 'https://www.instagram.com/tv/CWVwVg1B0hg/',
   address: {
     street: '84-46 Grand Ave',
     city: 'Elmhurst',

@@ -1,14 +1,10 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { Play } from 'lucide-react'
 import { useRef } from 'react'
 import { SITE } from '../../data/site'
 import { Button } from '../ui/Button'
 import { Logo } from '../ui/Logo'
-
-const HERO_IMAGES = [
-  'https://images.unsplash.com/photo-1622286342621-4bd786c24470?w=1920&h=1080&fit=crop&q=85',
-  'https://images.unsplash.com/photo-1585747860715-2ba37e808f54?w=1920&h=1080&fit=crop&q=85',
-  'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1920&h=1080&fit=crop&q=85',
-]
+import { HeroBackground } from './HeroBackground'
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
@@ -16,7 +12,6 @@ export function Hero() {
     target: ref,
     offset: ['start start', 'end start'],
   })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   return (
@@ -25,22 +20,7 @@ export function Hero() {
       id="hero"
       className="relative min-h-[100dvh] flex items-end overflow-hidden bg-void"
     >
-      <motion.div style={{ y }} className="absolute inset-0">
-        <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
-          {HERO_IMAGES.map((src, i) => (
-            <div key={src} className="relative overflow-hidden h-full min-h-[40vh] md:min-h-0">
-              <img
-                src={src}
-                alt=""
-                className="h-full w-full object-cover"
-                loading={i === 0 ? 'eager' : 'lazy'}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="absolute inset-0 bg-void/80 md:bg-void/70" />
-        <div className="absolute inset-0 bg-linear-to-t from-void via-void/50 to-void/30" />
-      </motion.div>
+      <HeroBackground />
 
       <motion.div
         style={{ opacity }}
@@ -69,7 +49,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="font-display text-[clamp(2.5rem,10vw,6.5rem)] leading-[0.92] text-cream tracking-wide max-w-4xl"
+          className="font-display text-[clamp(2.5rem,10vw,6.5rem)] leading-[0.92] text-cream tracking-wide max-w-4xl drop-shadow-sm"
         >
           {SITE.tagline.split('. ').map((line, i) => (
             <span key={line} className="block">
@@ -100,6 +80,19 @@ export function Hero() {
             View Barbers
           </Button>
         </motion.div>
+
+        <motion.a
+          href={SITE.heroInstagramTv}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.9 }}
+          className="mt-8 inline-flex items-center gap-2 text-sm text-silver hover:text-neon-dim transition-colors"
+        >
+          <Play size={16} className="text-neon" />
+          Watch on Instagram
+        </motion.a>
 
         <motion.div
           initial={{ opacity: 0 }}
