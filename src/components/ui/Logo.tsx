@@ -1,4 +1,4 @@
-const LOGO_SRC = `${import.meta.env.BASE_URL}logo.png?v=3`
+const LOGO_SRC = `${import.meta.env.BASE_URL}logo.png?v=4`
 
 interface LogoProps {
   className?: string
@@ -22,7 +22,7 @@ export function Logo({ className = '', size = 'md' }: LogoProps) {
         alt="DREAM Barbershop & Salon"
         width={160}
         height={160}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-contain"
       />
     </div>
   )
