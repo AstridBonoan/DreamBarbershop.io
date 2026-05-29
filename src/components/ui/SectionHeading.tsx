@@ -23,7 +23,7 @@ export function SectionHeading({
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className={`max-w-2xl mb-12 md:mb-16 ${alignClass}`}
     >
-      <span className="block font-heading text-xs md:text-sm tracking-[0.35em] uppercase text-gold mb-3">
+      <span className="block font-heading text-xs md:text-sm tracking-[0.35em] uppercase text-muted mb-3">
         {label}
       </span>
       <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-cream leading-[0.95] tracking-wide">
@@ -35,7 +35,7 @@ export function SectionHeading({
         </p>
       )}
       <div
-        className={`mt-6 h-px w-16 bg-linear-to-r from-gold to-transparent ${align === 'center' ? 'mx-auto' : ''}`}
+        className={`mt-6 h-px w-16 bg-cream ${align === 'center' ? 'mx-auto' : ''}`}
       />
     </motion.div>
   )

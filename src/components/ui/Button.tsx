@@ -12,12 +12,12 @@ interface ButtonProps extends Omit<HTMLMotionProps<'a'>, 'children'> {
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-gold text-ink hover:bg-ivory border border-gold/50 shadow-[0_0_30px_rgba(201,169,98,0.25)]',
+    'bg-cream text-void hover:bg-ivory border border-cream shadow-[0_4px_20px_rgba(0,0,0,0.12)]',
   secondary:
-    'bg-transparent text-cream border border-cream/30 hover:border-gold hover:text-gold',
-  ghost: 'bg-transparent text-cream hover:text-gold',
+    'bg-transparent text-cream border border-stone hover:border-cream hover:bg-charcoal',
+  ghost: 'bg-transparent text-cream hover:text-ivory',
   outline:
-    'bg-transparent text-gold border border-gold/60 hover:bg-gold/10',
+    'bg-transparent text-cream border border-cream hover:bg-cream hover:text-void',
 }
 
 const sizes: Record<'sm' | 'md' | 'lg', string> = {

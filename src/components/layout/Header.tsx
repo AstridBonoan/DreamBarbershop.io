@@ -29,18 +29,18 @@ export function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-ink/90 backdrop-blur-xl border-b border-white/5 py-3'
-            : 'bg-transparent py-5 md:py-6'
+            ? 'bg-void/95 backdrop-blur-xl border-b border-stone py-3 shadow-sm'
+            : 'bg-void/80 backdrop-blur-md py-4 md:py-5'
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
           <a href="#" className="group flex items-center gap-2">
-            <span className="font-display text-3xl md:text-4xl tracking-wider text-cream group-hover:text-gold transition-colors">
+            <span className="font-display text-3xl md:text-4xl tracking-wider text-cream group-hover:opacity-70 transition-opacity">
               {SITE.name}
             </span>
-            <span className="hidden sm:block h-4 w-px bg-gold/40" />
-            <span className="hidden sm:block font-heading text-[10px] tracking-[0.3em] uppercase text-silver">
-              Barbershop
+            <span className="hidden sm:block h-4 w-px bg-stone" />
+            <span className="hidden sm:block font-heading text-[10px] tracking-[0.3em] uppercase text-muted">
+              Barbershop & Salon
             </span>
           </a>
 
@@ -49,7 +49,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-gold transition-colors"
+                className="font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-cream transition-colors"
               >
                 {link.label}
               </a>
@@ -65,7 +65,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 text-cream hover:text-gold transition-colors"
+            className="lg:hidden p-2 text-cream hover:opacity-70 transition-opacity"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -85,7 +85,7 @@ export function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-void/95 backdrop-blur-2xl"
+              className="absolute inset-0 bg-void/60 backdrop-blur-sm"
               onClick={() => setMenuOpen(false)}
             />
             <motion.nav
@@ -93,7 +93,7 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-charcoal border-l border-white/5 p-8 pt-24 flex flex-col gap-6"
+              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-void border-l border-stone shadow-2xl p-8 pt-24 flex flex-col gap-6"
             >
               {NAV_LINKS.map((link, i) => (
                 <motion.a
@@ -103,12 +103,12 @@ export function Header() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="font-display text-4xl text-cream hover:text-gold transition-colors"
+                  className="font-display text-4xl text-cream hover:opacity-60 transition-opacity"
                 >
                   {link.label}
                 </motion.a>
               ))}
-              <div className="mt-auto pt-8 border-t border-white/10">
+              <div className="mt-auto pt-8 border-t border-stone">
                 <Button
                   href={SITE.bookingUrl}
                   className="w-full justify-center"

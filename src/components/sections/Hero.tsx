@@ -15,49 +15,43 @@ export function Hero() {
     target: ref,
     offset: ['start start', 'end start'],
   })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   return (
     <section
       ref={ref}
       id="hero"
-      className="relative min-h-[100dvh] flex items-end overflow-hidden"
+      className="relative min-h-[100dvh] flex items-end overflow-hidden bg-void"
     >
       <motion.div style={{ y }} className="absolute inset-0">
-        <div className="absolute inset-0 grid grid-cols-3">
+        <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
           {HERO_IMAGES.map((src, i) => (
-            <div key={src} className="relative overflow-hidden">
+            <div key={src} className="relative overflow-hidden h-full min-h-[40vh] md:min-h-0">
               <img
                 src={src}
                 alt=""
-                className="h-full w-full object-cover scale-110"
+                className="h-full w-full object-cover"
                 loading={i === 0 ? 'eager' : 'lazy'}
-              />
-              <div
-                className="absolute inset-0 bg-ink/50"
-                style={{ animationDelay: `${i * 0.2}s` }}
               />
             </div>
           ))}
         </div>
-        <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/70 to-ink/30" />
-        <div className="absolute inset-0 bg-linear-to-r from-ink/80 via-transparent to-ink/80" />
+        <div className="absolute inset-0 bg-void/75 md:bg-void/65" />
+        <div className="absolute inset-0 bg-linear-to-t from-void via-void/40 to-void/20" />
       </motion.div>
-
-      <div className="absolute inset-0 grain-overlay pointer-events-none" />
 
       <motion.div
         style={{ opacity }}
-        className="relative z-10 w-full mx-auto max-w-7xl px-5 md:px-8 pb-24 md:pb-32 pt-32"
+        className="relative z-10 w-full mx-auto max-w-7xl px-5 md:px-8 pb-28 md:pb-32 pt-28"
       >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="inline-block font-heading text-xs tracking-[0.4em] uppercase text-gold mb-4">
-            Queens, New York
+          <span className="inline-block font-heading text-xs tracking-[0.4em] uppercase text-muted mb-4">
+            Elmhurst · Queens
           </span>
         </motion.div>
 
@@ -69,11 +63,7 @@ export function Hero() {
         >
           {SITE.tagline.split('. ').map((line, i) => (
             <span key={line} className="block">
-              {i === 2 ? (
-                <span className="text-gradient-gold">{line}</span>
-              ) : (
-                line + (i < 2 ? '.' : '')
-              )}
+              {line + (i < 2 ? '.' : '')}
             </span>
           ))}
         </motion.h1>
@@ -111,7 +101,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-px h-12 bg-linear-to-b from-gold to-transparent"
+            className="w-px h-12 bg-linear-to-b from-cream to-transparent"
           />
         </motion.div>
       </motion.div>

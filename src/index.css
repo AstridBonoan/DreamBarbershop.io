@@ -5,17 +5,18 @@
   --font-heading: 'Syne', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
-  --color-void: #050505;
-  --color-ink: #0a0a0a;
-  --color-charcoal: #141414;
-  --color-slate: #1c1c1c;
-  --color-stone: #2a2a2a;
-  --color-muted: #6b6b6b;
-  --color-silver: #a8a8a8;
-  --color-cream: #f5f2eb;
-  --color-ivory: #e8e4dc;
-  --color-gold: #c9a962;
-  --color-gold-dim: #9a7d3f;
+  --color-void: #ffffff;
+  --color-ink: #fafafa;
+  --color-charcoal: #f4f4f5;
+  --color-slate: #e4e4e7;
+  --color-stone: #d4d4d8;
+  --color-muted: #71717a;
+  --color-silver: #52525b;
+  --color-cream: #18181b;
+  --color-ivory: #27272a;
+  --color-gold: #18181b;
+  --color-gold-dim: #3f3f46;
+  --color-accent: #18181b;
 }
 
 @layer base {
@@ -24,25 +25,29 @@
   }
 
   body {
-    @apply bg-ink text-cream font-body antialiased overflow-x-hidden;
+    @apply bg-void text-cream font-body antialiased overflow-x-hidden;
   }
 
   ::selection {
-    @apply bg-gold/30 text-cream;
+    @apply bg-slate text-cream;
   }
 }
 
 @layer utilities {
-  .text-gradient-gold {
-    @apply bg-linear-to-r from-gold via-ivory to-gold bg-clip-text text-transparent;
+  .text-gradient-brand {
+    @apply text-cream;
   }
 
   .glass-panel {
-    @apply bg-charcoal/60 backdrop-blur-xl border border-white/5;
+    @apply bg-void/90 backdrop-blur-xl border border-stone/80 shadow-sm;
   }
 
-  .grain-overlay {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  .card-elevated {
+    @apply bg-void border border-stone/60 shadow-[0_2px_24px_rgba(0,0,0,0.06)];
+  }
+
+  .section-muted {
+    @apply bg-ink;
   }
 
   .scrollbar-hide {

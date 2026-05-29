@@ -20,7 +20,7 @@ export function MobileBookingCTA() {
             href={SITE.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 w-full py-4 bg-gold text-ink font-heading font-bold text-sm tracking-[0.2em] uppercase shadow-[0_-4px_40px_rgba(201,169,98,0.4)]"
+            className="flex items-center justify-center gap-3 w-full py-4 bg-cream text-void font-heading font-bold text-sm tracking-[0.2em] uppercase shadow-[0_-4px_24px_rgba(0,0,0,0.12)] border border-stone"
           >
             <Calendar size={18} />
             Book Appointment

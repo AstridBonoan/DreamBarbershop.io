@@ -5,12 +5,12 @@ import { SectionHeading } from '../ui/SectionHeading'
 
 export function Reviews() {
   return (
-    <section id="reviews" className="py-20 md:py-32 bg-ink relative">
+    <section id="reviews" className="py-20 md:py-32 section-muted relative">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
           label="Testimonials"
           title="CLIENT LOVE"
-          description="Real feedback from real regulars. Trust built one cut at a time."
+          description="What regulars say — the same trust you see in our reviews online."
           align="center"
         />
 
@@ -22,24 +22,22 @@ export function Reviews() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className={`glass-panel p-6 md:p-8 ${
-                index === 0 ? 'md:col-span-2 lg:col-span-1 lg:row-span-1' : ''
-              }`}
+              className="card-elevated p-6 md:p-8"
             >
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: review.rating }).map((_, i) => (
-                  <Star key={i} size={14} className="fill-gold text-gold" />
+                  <Star key={i} size={14} className="fill-cream text-cream" />
                 ))}
               </div>
-              <p className="text-cream text-base md:text-lg leading-relaxed">
+              <p className="text-cream text-base md:text-lg leading-relaxed font-light">
                 &ldquo;{review.text}&rdquo;
               </p>
-              <footer className="mt-6 flex items-center justify-between">
-                <cite className="not-italic font-heading text-sm tracking-wider text-gold">
+              <footer className="mt-6 flex items-center justify-between gap-4">
+                <cite className="not-italic font-heading text-sm tracking-wider text-cream">
                   — {review.name}
                 </cite>
                 {review.service && (
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-muted">
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-muted shrink-0">
                     {review.service}
                   </span>
                 )}
