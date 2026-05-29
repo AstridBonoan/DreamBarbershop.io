@@ -1,0 +1,50 @@
+import { motion, type HTMLMotionProps } from 'framer-motion'
+import type { ReactNode } from 'react'
+
+type Variant = 'primary' | 'secondary' | 'ghost' | 'outline'
+
+interface ButtonProps extends Omit<HTMLMotionProps<'a'>, 'children'> {
+  children: ReactNode
+  variant?: Variant
+  size?: 'sm' | 'md' | 'lg'
+  href?: string
+}
+
+const variants: Record<Variant, string> = {
+  primary:
+    'bg-gold text-ink hover:bg-ivory border border-gold/50 shadow-[0_0_30px_rgba(201,169,98,0.25)]',
+  secondary:
+    'bg-transparent text-cream border border-cream/30 hover:border-gold hover:text-gold',
+  ghost: 'bg-transparent text-cream hover:text-gold',
+  outline:
+    'bg-transparent text-gold border border-gold/60 hover:bg-gold/10',
+}
+
+const sizes: Record<'sm' | 'md' | 'lg', string> = {
+  sm: 'px-4 py-2 text-xs tracking-widest',
+  md: 'px-6 py-3 text-sm tracking-widest',
+  lg: 'px-8 py-4 text-sm tracking-[0.2em]',
+}
+
+export function Button({
+  children,
+  variant = 'primary',
+  size = 'md',
+  className = '',
+  href = '#',
+  ...props
+}: ButtonProps) {
+  return (
+    <motion.a
+      href={href}
+      target={href.startsWith('http') ? '_blank' : undefined}
+      rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+      whileHover={{ scale: 1.02, y: -1 }}
+      whileTap={{ scale: 0.98 }}
+      className={`inline-flex items-center justify-center gap-2 font-heading font-semibold uppercase transition-colors duration-300 ${variants[variant]} ${sizes[size]} ${className}`}
+      {...props}
+    >
+      {children}
+    </motion.a>
+  )
+}
