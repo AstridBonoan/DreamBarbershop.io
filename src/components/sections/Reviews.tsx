@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Star } from 'lucide-react'
+import { ExternalLink, Star, User } from 'lucide-react'
 import { REVIEWS } from '../../data/reviews'
 import { SITE } from '../../data/site'
 import { GoogleLogo } from '../ui/GoogleLogo'
@@ -76,12 +76,18 @@ export function Reviews() {
               <p className="text-cream text-base md:text-lg leading-relaxed font-light flex-1">
                 &ldquo;{review.text}&rdquo;
               </p>
-              <footer className="mt-6 flex items-end justify-between gap-4 border-t border-stone/60 pt-4">
-                <cite className="not-italic">
-                  <span className="block font-heading text-sm tracking-wider text-cream">
+              <footer className="mt-6 flex items-center gap-3 border-t border-stone/60 pt-4">
+                <div
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate border border-stone"
+                  aria-hidden
+                >
+                  <User size={18} className="text-muted" />
+                </div>
+                <cite className="not-italic min-w-0">
+                  <span className="block font-heading text-sm tracking-wider text-cream truncate">
                     {review.name}
                   </span>
-                  <span className="mt-1 block text-xs text-muted">{review.date}</span>
+                  <span className="mt-0.5 block text-xs text-muted">{review.date}</span>
                 </cite>
               </footer>
             </motion.blockquote>
