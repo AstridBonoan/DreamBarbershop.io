@@ -3,31 +3,32 @@ import { SectionHeading } from '../ui/SectionHeading'
 import { SITE } from '../../data/site'
 
 const BASE = import.meta.env.BASE_URL
-const SHOP_W = 960
-const SHOP_H = 739
+const SHOP_W = 1024
+const SHOP_H = 768
 
 export function About() {
   return (
     <section id="about" className="py-20 md:py-32 section-moss relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative order-2 lg:order-1 w-full max-w-[960px] lg:max-w-none mx-auto lg:mx-0">
-            <div className="relative aspect-[4/3] overflow-hidden card-elevated bg-charcoal">
-              <picture>
+          <div className="relative order-2 lg:order-1 w-full max-w-[1024px] lg:max-w-none mx-auto lg:mx-0">
+            <div className="relative aspect-[4/3] overflow-hidden card-elevated bg-charcoal [contain:layout]">
+              <picture className="block h-full w-full">
                 <source
                   type="image/webp"
-                  srcSet={`${BASE}shop-exterior.webp 960w, ${BASE}shop-exterior@2x.webp 1440w`}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  srcSet={`${BASE}shop-exterior.webp 1024w, ${BASE}shop-exterior@2x.webp 1600w`}
+                  sizes="(min-width: 1024px) min(640px, 50vw), 100vw"
                 />
                 <img
                   src={`${BASE}shop-exterior.jpg`}
-                  srcSet={`${BASE}shop-exterior.jpg 960w, ${BASE}shop-exterior@2x.jpg 1440w`}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  srcSet={`${BASE}shop-exterior.jpg 1024w, ${BASE}shop-exterior@2x.jpg 1600w`}
+                  sizes="(min-width: 1024px) min(640px, 50vw), 100vw"
                   width={SHOP_W}
                   height={SHOP_H}
-                  alt="DREAM Barbershop storefront on Grand Ave, Elmhurst"
-                  className="h-full w-full object-cover object-center"
-                  loading="lazy"
+                  alt="DREAM Barbershop and Salon storefront at 84-46 Grand Ave, Elmhurst"
+                  className="h-full w-full object-cover object-center [image-rendering:auto]"
+                  loading="eager"
+                  fetchPriority="high"
                   decoding="async"
                 />
               </picture>
