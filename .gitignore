@@ -13,6 +13,7 @@ dist-ssr
 *.local
 square-*.html
 scripts/parse-square.py
+scripts/check-images.py
 
 # Editor directories and files
 .vscode/*

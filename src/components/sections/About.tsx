@@ -3,6 +3,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 import { SITE } from '../../data/site'
 
 const BASE = import.meta.env.BASE_URL
+const SHOP_SRC = `${BASE}shop-exterior.jpg?v=4`
 const SHOP_W = 1024
 const SHOP_H = 768
 
@@ -10,33 +11,27 @@ export function About() {
   return (
     <section id="about" className="py-20 md:py-32 section-moss relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative order-2 lg:order-1 w-full max-w-[1024px] lg:max-w-none mx-auto lg:mx-0">
-            <div className="relative aspect-[4/3] overflow-hidden card-elevated bg-charcoal [contain:layout]">
-              <picture className="block h-full w-full">
-                <source
-                  type="image/webp"
-                  srcSet={`${BASE}shop-exterior.webp 1024w, ${BASE}shop-exterior@2x.webp 1600w`}
-                  sizes="(min-width: 1024px) min(640px, 50vw), 100vw"
-                />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div className="relative order-2 lg:order-1 w-full max-w-[1024px] mx-auto lg:mx-0 lg:sticky lg:top-28">
+            <figure className="card-elevated overflow-hidden bg-charcoal">
+              <picture>
+                <source type="image/webp" srcSet={`${BASE}shop-exterior.webp?v=4`} />
                 <img
-                  src={`${BASE}shop-exterior.jpg`}
-                  srcSet={`${BASE}shop-exterior.jpg 1024w, ${BASE}shop-exterior@2x.jpg 1600w`}
-                  sizes="(min-width: 1024px) min(640px, 50vw), 100vw"
+                  src={SHOP_SRC}
                   width={SHOP_W}
                   height={SHOP_H}
                   alt="DREAM Barbershop and Salon storefront at 84-46 Grand Ave, Elmhurst"
-                  className="h-full w-full object-cover object-center [image-rendering:auto]"
+                  className="block w-full h-auto max-w-[1024px]"
                   loading="eager"
                   fetchPriority="high"
-                  decoding="async"
+                  decoding="sync"
                 />
               </picture>
-            </div>
-            <div className="absolute -bottom-6 -right-4 md:-right-8 card-elevated p-6 max-w-[200px] shadow-lg">
-              <span className="font-display text-5xl text-cream">4.8</span>
-              <p className="text-xs text-muted mt-1 tracking-wide uppercase">
-                Rated on Google & Yelp
+            </figure>
+            <div className="absolute bottom-4 right-4 card-elevated px-5 py-4 shadow-lg pointer-events-none">
+              <span className="font-display text-4xl text-cream leading-none">4.8</span>
+              <p className="text-[10px] text-muted mt-1 tracking-widest uppercase">
+                Google & Yelp
               </p>
             </div>
           </div>
