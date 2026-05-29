@@ -18,7 +18,7 @@ export function Hero() {
     <section
       ref={ref}
       id="hero"
-      className="relative min-h-[100dvh] flex items-end overflow-hidden bg-void"
+      className="relative min-h-[100dvh] flex items-end overflow-hidden bg-black"
     >
       <HeroBackground />
 
@@ -32,7 +32,10 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="mb-6 md:mb-8"
         >
-          <Logo size="hero" className="drop-shadow-[0_8px_32px_rgba(184,240,40,0.35)]" />
+          <Logo
+            size="hero"
+            className="drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)] ring-2 ring-white/20 rounded-full"
+          />
         </motion.div>
 
         <motion.div
@@ -40,7 +43,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.25 }}
         >
-          <span className="inline-block font-heading text-xs tracking-[0.4em] uppercase text-neon-dim mb-4">
+          <span className="hero-text-shadow inline-block font-heading text-xs tracking-[0.4em] uppercase text-neon mb-4">
             Elmhurst · Queens
           </span>
         </motion.div>
@@ -49,7 +52,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="font-display text-[clamp(2.5rem,10vw,6.5rem)] leading-[0.92] text-cream tracking-wide max-w-4xl drop-shadow-sm"
+          className="hero-text-shadow font-display text-[clamp(2.5rem,10vw,6.5rem)] leading-[0.92] text-white tracking-wide max-w-4xl"
         >
           {SITE.tagline.split('. ').map((line, i) => (
             <span key={line} className="block">
@@ -62,7 +65,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-6 max-w-lg text-silver text-base md:text-lg leading-relaxed"
+          className="hero-text-shadow mt-6 max-w-lg text-white/90 text-base md:text-lg leading-relaxed"
         >
           {SITE.subheadline}
         </motion.p>
@@ -76,7 +79,12 @@ export function Hero() {
           <Button href={SITE.bookingUrl} size="lg">
             Book Appointment
           </Button>
-          <Button href="#barbers" variant="secondary" size="lg">
+          <Button
+            href="#barbers"
+            variant="secondary"
+            size="lg"
+            className="!text-white !border-white/50 hover:!border-neon hover:!bg-white/10"
+          >
             View Barbers
           </Button>
         </motion.div>
@@ -88,7 +96,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="mt-8 inline-flex items-center gap-2 text-sm text-silver hover:text-neon-dim transition-colors"
+          className="hero-text-shadow mt-8 inline-flex items-center gap-2 text-sm text-white/80 hover:text-neon transition-colors"
         >
           <Play size={16} className="text-neon" />
           Watch on Instagram
@@ -100,11 +108,11 @@ export function Hero() {
           transition={{ delay: 1.2, duration: 1 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] tracking-[0.3em] uppercase text-muted">Scroll</span>
+          <span className="text-[10px] tracking-[0.3em] uppercase text-white/50">Scroll</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-1 h-12 bg-neon rounded-full"
+            className="w-1 h-12 bg-neon rounded-full shadow-[0_0_12px_rgba(184,240,40,0.8)]"
           />
         </motion.div>
       </motion.div>
