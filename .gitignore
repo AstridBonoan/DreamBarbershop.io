@@ -15,6 +15,7 @@ square-*.html
 scripts/parse-square.py
 scripts/check-images.py
 scripts/export-gallery.py
+scripts/export-gallery-batch2.py
 
 # Editor directories and files
 .vscode/*

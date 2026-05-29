@@ -35,7 +35,7 @@ export function Gallery() {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.04 }}
+              transition={{ duration: 0.45, delay: Math.min(index * 0.03, 0.5) }}
               className="group block break-inside-avoid relative overflow-hidden bg-charcoal rounded-sm"
             >
               <picture>
