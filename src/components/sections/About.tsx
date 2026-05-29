@@ -17,11 +17,11 @@ export function About() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div ref={ref} className="relative order-2 lg:order-1">
-            <motion.div style={{ y: imageY }} className="relative aspect-[4/5] overflow-hidden card-elevated">
+            <motion.div style={{ y: imageY }} className="relative aspect-[4/3] overflow-hidden card-elevated">
               <img
-                src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=900&h=1100&fit=crop&q=85"
-                alt="DREAM Barbershop interior"
-                className="h-full w-full object-cover"
+                src={`${import.meta.env.BASE_URL}${SITE.shopExteriorImage}`}
+                alt="DREAM Barbershop storefront on Grand Ave, Elmhurst"
+                className="h-full w-full object-cover object-center"
                 loading="lazy"
               />
             </motion.div>
@@ -60,7 +60,7 @@ export function About() {
                 {[
                   { stat: 'Grand Ave', label: 'Elmhurst Location' },
                   { stat: 'Walk-In', label: 'When Available' },
-                  { stat: 'IG Book', label: 'Fast Scheduling' },
+                  { stat: 'Book', label: 'Online via Square' },
                 ].map((item) => (
                   <li key={item.label} className="border-l-2 border-cream pl-4">
                     <span className="font-display text-2xl md:text-3xl text-cream">{item.stat}</span>
