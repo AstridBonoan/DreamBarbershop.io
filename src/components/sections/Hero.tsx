@@ -1,5 +1,4 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Play } from 'lucide-react'
 import { useRef } from 'react'
 import { SITE } from '../../data/site'
 import { Button } from '../ui/Button'
@@ -80,19 +79,6 @@ export function Hero() {
             View Barbers
           </Button>
         </motion.div>
-
-        <motion.a
-          href={SITE.heroInstagramTv}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9 }}
-          className="mt-8 inline-flex items-center gap-2 text-sm text-silver hover:text-neon-dim transition-colors"
-        >
-          <Play size={16} className="text-neon" />
-          Watch on Instagram
-        </motion.a>
 
         <motion.div
           initial={{ opacity: 0 }}
