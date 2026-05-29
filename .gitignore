@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+square-*.html
+scripts/parse-square.py
 
 # Editor directories and files
 .vscode/*
