@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { SITE } from '../../data/site'
 import { useScrollPosition } from '../../hooks/useScrollPosition'
 import { Button } from '../ui/Button'
+import { Logo } from '../ui/Logo'
 
 const NAV_LINKS = [
   { label: 'Barbers', href: '#barbers' },
@@ -29,17 +30,14 @@ export function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-void/95 backdrop-blur-xl border-b border-stone py-3 shadow-sm'
-            : 'bg-void/80 backdrop-blur-md py-4 md:py-5'
+            ? 'bg-void/95 backdrop-blur-xl border-b border-stone py-2 shadow-sm'
+            : 'bg-void/90 backdrop-blur-md py-3 md:py-4'
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
-          <a href="#" className="group flex items-center gap-2">
-            <span className="font-display text-3xl md:text-4xl tracking-wider text-cream group-hover:opacity-70 transition-opacity">
-              {SITE.name}
-            </span>
-            <span className="hidden sm:block h-4 w-px bg-stone" />
-            <span className="hidden sm:block font-heading text-[10px] tracking-[0.3em] uppercase text-muted">
+          <a href="#" className="group flex items-center gap-3 shrink-0">
+            <Logo size="sm" className="transition-transform group-hover:scale-105" />
+            <span className="hidden md:block font-script text-lg text-cream -mt-1 opacity-90">
               Barbershop & Salon
             </span>
           </a>
@@ -49,7 +47,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-cream transition-colors"
+                className="font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-neon-dim transition-colors"
               >
                 {link.label}
               </a>
@@ -65,7 +63,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 text-cream hover:opacity-70 transition-opacity"
+            className="lg:hidden p-2 text-cream hover:text-neon-dim transition-colors"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -93,8 +91,11 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-void border-l border-stone shadow-2xl p-8 pt-24 flex flex-col gap-6"
+              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-void border-l border-stone shadow-2xl p-8 pt-20 flex flex-col gap-6"
             >
+              <div className="flex justify-center pb-4 border-b border-stone">
+                <Logo size="md" />
+              </div>
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.href}
@@ -103,7 +104,7 @@ export function Header() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="font-display text-4xl text-cream hover:opacity-60 transition-opacity"
+                  className="font-display text-4xl text-cream hover:text-neon-dim transition-colors"
                 >
                   {link.label}
                 </motion.a>

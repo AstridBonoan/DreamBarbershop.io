@@ -26,7 +26,7 @@ export function Reviews() {
             >
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: review.rating }).map((_, i) => (
-                  <Star key={i} size={14} className="fill-cream text-cream" />
+                  <Star key={i} size={14} className="fill-neon text-neon" />
                 ))}
               </div>
               <p className="text-cream text-base md:text-lg leading-relaxed font-light">

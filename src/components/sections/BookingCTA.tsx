@@ -13,7 +13,7 @@ export function BookingCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <Calendar className="mx-auto text-cream mb-6" size={32} strokeWidth={1.5} />
+          <Calendar className="mx-auto text-neon mb-6" size={32} strokeWidth={1.5} />
           <h2 className="font-display text-5xl sm:text-6xl md:text-7xl text-cream leading-none">
             BOOK ON INSTAGRAM
           </h2>

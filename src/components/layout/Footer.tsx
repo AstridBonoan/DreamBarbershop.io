@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { SITE } from '../../data/site'
 import { InstagramIcon } from '../ui/InstagramIcon'
+import { Logo } from '../ui/Logo'
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -10,13 +11,9 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 md:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           <div>
-            <span className="font-display text-5xl md:text-6xl text-cream tracking-wider">
-              {SITE.name}
-            </span>
-            <p className="mt-2 font-heading text-xs tracking-[0.25em] uppercase text-muted">
-              Barbershop & Salon
-            </p>
-            <p className="mt-4 text-silver max-w-md leading-relaxed">
+            <Logo size="lg" className="mb-4" />
+            <p className="text-script text-xl text-silver -mt-2 mb-4">Barbershop & Salon</p>
+            <p className="text-silver max-w-md leading-relaxed">
               Clean cuts and a welcoming shop on Grand Ave — follow us on Instagram for daily work
               and booking.
             </p>
@@ -24,27 +21,27 @@ export function Footer() {
             <div className="mt-8 space-y-4">
               <a
                 href={`tel:${SITE.phone.replace(/\D/g, '')}`}
-                className="flex items-center gap-3 text-cream hover:opacity-60 transition-opacity"
+                className="flex items-center gap-3 text-cream hover:text-neon-dim transition-colors"
               >
-                <Phone size={18} className="text-muted shrink-0" />
+                <Phone size={18} className="text-neon shrink-0" />
                 {SITE.phone}
               </a>
               <a
                 href={`mailto:${SITE.email}`}
-                className="flex items-center gap-3 text-cream hover:opacity-60 transition-opacity"
+                className="flex items-center gap-3 text-cream hover:text-neon-dim transition-colors"
               >
-                <Mail size={18} className="text-muted shrink-0" />
+                <Mail size={18} className="text-neon shrink-0" />
                 {SITE.email}
               </a>
               <div className="flex items-start gap-3 text-cream">
-                <MapPin size={18} className="text-muted shrink-0 mt-0.5" />
+                <MapPin size={18} className="text-neon shrink-0 mt-0.5" />
                 {SITE.address.full}
               </div>
               <a
                 href={SITE.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-cream hover:opacity-60 transition-opacity"
+                className="inline-flex items-center gap-3 text-cream hover:text-neon-dim transition-colors"
               >
                 <InstagramIcon size={18} className="shrink-0" />
                 {SITE.instagramHandle}
@@ -54,12 +51,15 @@ export function Footer() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-muted mb-4">
+              <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-neon-dim mb-4">
                 Hours
               </h3>
               <ul className="space-y-3">
                 {SITE.hours.map((h) => (
-                  <li key={h.day} className="flex justify-between gap-4 text-sm border-b border-stone/60 pb-2">
+                  <li
+                    key={h.day}
+                    className="flex justify-between gap-4 text-sm border-b border-stone/60 pb-2"
+                  >
                     <span className="text-silver">{h.day}</span>
                     <span className="text-cream">{h.time}</span>
                   </li>

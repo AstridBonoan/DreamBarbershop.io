@@ -12,7 +12,7 @@ export function About() {
   const imageY = useTransform(scrollYProgress, [0, 1], ['-5%', '5%'])
 
   return (
-    <section id="about" className="py-20 md:py-32 bg-void relative overflow-hidden">
+    <section id="about" className="py-20 md:py-32 section-moss relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div ref={ref} className="relative order-2 lg:order-1">

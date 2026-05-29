@@ -30,7 +30,7 @@ export function Services() {
               }`}
             >
               {service.tag && (
-                <span className="absolute top-4 right-4 text-[10px] font-heading tracking-[0.2em] uppercase text-void bg-cream px-2 py-1">
+                <span className="absolute top-4 right-4 text-[10px] font-heading tracking-[0.2em] uppercase text-cream bg-neon px-2 py-1 font-bold">
                   {service.tag}
                 </span>
               )}

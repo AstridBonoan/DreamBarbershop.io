@@ -4,6 +4,7 @@
   --font-display: 'Bebas Neue', system-ui, sans-serif;
   --font-heading: 'Syne', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
+  --font-script: 'Segoe Script', 'Brush Script MT', cursive;
 
   --color-void: #ffffff;
   --color-ink: #fafafa;
@@ -14,9 +15,14 @@
   --color-silver: #52525b;
   --color-cream: #18181b;
   --color-ivory: #27272a;
-  --color-gold: #18181b;
-  --color-gold-dim: #3f3f46;
-  --color-accent: #18181b;
+  --color-neon: #b8f028;
+  --color-neon-bright: #d4ff4d;
+  --color-neon-dim: #8bc920;
+  --color-moss: #1a3d28;
+  --color-moss-light: #e8f3ec;
+  --color-gold: #b8f028;
+  --color-gold-dim: #8bc920;
+  --color-accent: #b8f028;
 }
 
 @layer base {
@@ -29,13 +35,17 @@
   }
 
   ::selection {
-    @apply bg-slate text-cream;
+    @apply bg-neon/40 text-cream;
   }
 }
 
 @layer utilities {
   .text-gradient-brand {
     @apply text-cream;
+  }
+
+  .text-script {
+    font-family: var(--font-script);
   }
 
   .glass-panel {
@@ -48,6 +58,14 @@
 
   .section-muted {
     @apply bg-ink;
+  }
+
+  .section-moss {
+    @apply bg-moss-light;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 24px rgba(184, 240, 40, 0.45);
   }
 
   .scrollbar-hide {
