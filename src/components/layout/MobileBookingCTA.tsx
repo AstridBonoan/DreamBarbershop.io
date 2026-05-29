@@ -23,7 +23,7 @@ export function MobileBookingCTA() {
             className="flex items-center justify-center gap-3 w-full py-4 bg-neon text-cream font-heading font-bold text-sm tracking-[0.2em] uppercase neon-glow border border-neon-dim"
           >
             <Calendar size={18} />
-            Book Appointment
+            Book Online
           </a>
         </motion.div>
       )}

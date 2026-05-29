@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { SITE } from '../../data/site'
 import { ScrollReveal } from '../ui/ScrollReveal'
 import { SectionHeading } from '../ui/SectionHeading'
 
@@ -41,16 +42,16 @@ export function About() {
 
             <ScrollReveal delay={0.1}>
               <p className="text-silver leading-relaxed mb-6">
-                DREAM Barbershop & Salon is rooted in Queens — the same community you see on our
-                Instagram. We keep the shop clean, the cuts sharp, and the energy positive. Whether
-                you need a skin fade, lineup, or full service, you leave looking fresh.
+                DREAM Barbershop & Salon on Grand Ave is rooted in Elmhurst — clean shop, sharp
+                cuts, and a welcoming vibe. Book haircuts and haircut & beard combos online, or
+                walk in when chairs are open.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
               <p className="text-silver leading-relaxed mb-8">
-                DM us on Instagram to book, or walk in when we have availability. Families,
-                regulars, and first-timers — everyone gets the same level of care.
+                {SITE.bookingNotice.body} Thank you for choosing DREAM — we look forward to seeing
+                you in the chair.
               </p>
             </ScrollReveal>
 

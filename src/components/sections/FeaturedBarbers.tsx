@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { BARBERS } from '../../data/barbers'
+import { BARBERS, BARBERS_APPOINTMENT_NOTE } from '../../data/barbers'
 import { Button } from '../ui/Button'
 import { InstagramIcon } from '../ui/InstagramIcon'
 import { SectionHeading } from '../ui/SectionHeading'
@@ -11,8 +11,12 @@ export function FeaturedBarbers() {
         <SectionHeading
           label="The Team"
           title="FEATURED BARBERS"
-          description="Book direct with your barber — same energy as our Instagram feed."
+          description="Book online where available — select barbers accept scheduled appointments."
         />
+
+        <p className="text-sm text-muted max-w-2xl mb-8 -mt-6 leading-relaxed">
+          {BARBERS_APPOINTMENT_NOTE}
+        </p>
 
         <div className="flex gap-5 overflow-x-auto pb-4 -mx-5 px-5 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 scrollbar-hide snap-x snap-mandatory">
           {BARBERS.map((barber, index) => (
@@ -62,7 +66,7 @@ export function FeaturedBarbers() {
                   size="sm"
                   className="w-full justify-center"
                 >
-                  Book {barber.name.split(' ')[0]}
+                  {barber.acceptsAppointments ? `Book ${barber.name}` : 'View Shop'}
                 </Button>
               </div>
             </motion.article>

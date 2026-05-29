@@ -38,6 +38,14 @@ export function Footer() {
                 {SITE.address.full}
               </div>
               <a
+                href={SITE.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-cream hover:text-neon-dim transition-colors font-heading text-sm tracking-wider"
+              >
+                Book online (Square)
+              </a>
+              <a
                 href={SITE.instagram}
                 target="_blank"
                 rel="noopener noreferrer"

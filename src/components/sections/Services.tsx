@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { SERVICES } from '../../data/services'
+import { BOOKING_FOOTNOTE, SERVICES } from '../../data/services'
 import { SITE } from '../../data/site'
 import { Button } from '../ui/Button'
 import { SectionHeading } from '../ui/SectionHeading'
@@ -11,9 +11,23 @@ export function Services() {
         <SectionHeading
           label="Menu"
           title="SERVICES & PRICING"
-          description="Clean cuts, clear prices — walk-ins welcome when chairs are open."
+          description="Book haircuts and combos online. Other services available walk-in when chairs are open."
           align="center"
         />
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-10 max-w-3xl mx-auto card-elevated p-6 md:p-8 border-neon/30 bg-moss-light/50"
+        >
+          <h3 className="font-heading text-sm tracking-[0.2em] uppercase text-neon-dim mb-2">
+            {SITE.bookingNotice.title}
+          </h3>
+          <p className="text-silver text-sm md:text-base leading-relaxed">
+            {SITE.bookingNotice.body}
+          </p>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {SERVICES.map((service, index) => (
@@ -25,7 +39,7 @@ export function Services() {
               transition={{ duration: 0.5, delay: index * 0.08 }}
               className={`group relative p-6 md:p-8 transition-all duration-500 ${
                 service.featured
-                  ? 'card-elevated border-cream/20 bg-ink'
+                  ? 'card-elevated border-neon/40 bg-ink'
                   : 'card-elevated hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)]'
               }`}
             >
@@ -36,23 +50,36 @@ export function Services() {
               )}
               <h3 className="font-display text-3xl md:text-4xl text-cream">{service.name}</h3>
               <p className="mt-2 text-silver text-sm leading-relaxed">{service.description}</p>
-              <div className="mt-6 flex items-end justify-between">
-                <span className="font-display text-4xl text-cream">{service.price}</span>
-                <span className="text-xs text-muted tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
-                  Book →
-                </span>
+              <div className="mt-6 flex items-end justify-between gap-4">
+                <span className="font-display text-2xl md:text-3xl text-cream">{service.price}</span>
+                {service.bookable ? (
+                  <a
+                    href={SITE.bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-heading tracking-widest uppercase text-neon-dim hover:text-cream transition-colors"
+                  >
+                    Book →
+                  </a>
+                ) : (
+                  <span className="text-xs text-muted tracking-widest uppercase">Walk-in</span>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
 
+        <p className="mt-8 text-center text-sm text-muted max-w-2xl mx-auto leading-relaxed">
+          {BOOKING_FOOTNOTE}
+        </p>
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-12 text-center"
+          className="mt-10 text-center"
         >
-          <Button href={SITE.bookingUrl}>Book Your Service</Button>
+          <Button href={SITE.bookingUrl}>Book on Square</Button>
         </motion.div>
       </div>
     </section>
