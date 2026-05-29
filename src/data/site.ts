@@ -31,7 +31,7 @@ export const SITE = {
     title: 'Appointments now available',
     body: 'We offer online booking for Haircuts and Haircut & Beard combos. Appointment pricing is higher than walk-in rates. Only select barbers are currently accepting scheduled bookings.',
   },
-  shopExteriorImage: 'shop-exterior.png',
+  shopExteriorImage: 'shop-exterior.jpg',
   mapEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.8!2d-73.877!3d40.736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25f1c8b8b8b8b%3A0x0!2s84-46%20Grand%20Ave%2C%20Elmhurst%2C%20NY%2011373!5e0!3m2!1sen!2sus!4v1',
 } as const

@@ -1,31 +1,38 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
-import { SITE } from '../../data/site'
 import { ScrollReveal } from '../ui/ScrollReveal'
 import { SectionHeading } from '../ui/SectionHeading'
+import { SITE } from '../../data/site'
+
+const BASE = import.meta.env.BASE_URL
+const SHOP_W = 960
+const SHOP_H = 739
 
 export function About() {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  })
-  const imageY = useTransform(scrollYProgress, [0, 1], ['-5%', '5%'])
-
   return (
     <section id="about" className="py-20 md:py-32 section-moss relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div ref={ref} className="relative order-2 lg:order-1">
-            <motion.div style={{ y: imageY }} className="relative aspect-[4/3] overflow-hidden card-elevated">
-              <img
-                src={`${import.meta.env.BASE_URL}${SITE.shopExteriorImage}`}
-                alt="DREAM Barbershop storefront on Grand Ave, Elmhurst"
-                className="h-full w-full object-cover object-center"
-                loading="lazy"
-              />
-            </motion.div>
-            <div className="absolute -bottom-6 -right-4 md:-right-8 card-elevated p-6 max-w-[200px]">
+          <div className="relative order-2 lg:order-1 w-full max-w-[960px] lg:max-w-none mx-auto lg:mx-0">
+            <div className="relative aspect-[4/3] overflow-hidden card-elevated bg-charcoal">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet={`${BASE}shop-exterior.webp 960w, ${BASE}shop-exterior@2x.webp 1440w`}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                />
+                <img
+                  src={`${BASE}shop-exterior.jpg`}
+                  srcSet={`${BASE}shop-exterior.jpg 960w, ${BASE}shop-exterior@2x.jpg 1440w`}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  width={SHOP_W}
+                  height={SHOP_H}
+                  alt="DREAM Barbershop storefront on Grand Ave, Elmhurst"
+                  className="h-full w-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+            <div className="absolute -bottom-6 -right-4 md:-right-8 card-elevated p-6 max-w-[200px] shadow-lg">
               <span className="font-display text-5xl text-cream">4.8</span>
               <p className="text-xs text-muted mt-1 tracking-wide uppercase">
                 Rated on Google & Yelp
