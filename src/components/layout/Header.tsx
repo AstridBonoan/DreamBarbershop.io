@@ -25,10 +25,10 @@ function isRouteLink(link: NavLink): link is { label: string; to: string } {
 }
 
 const navLinkClass =
-  'font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-neon-dim transition-colors'
+  'font-heading text-xs tracking-[0.2em] uppercase text-silver hover:text-neon-dim transition-colors bg-transparent border-0 p-0 cursor-pointer'
 
 const mobileNavLinkClass =
-  'font-display text-4xl text-cream hover:text-neon-dim transition-colors block'
+  'font-display text-4xl text-cream hover:text-neon-dim transition-colors block bg-transparent border-0 p-0 cursor-pointer text-left w-full'
 
 export function Header() {
   const scrolled = useScrollPosition(40)
