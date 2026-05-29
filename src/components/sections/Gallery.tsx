@@ -25,7 +25,7 @@ export function Gallery() {
           </a>
         </div>
 
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-2 md:gap-3 space-y-2 md:space-y-3">
+        <div className="mx-auto max-w-3xl grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-1.5 sm:gap-2">
           {GALLERY.map((image, index) => (
             <motion.a
               key={image.id}
@@ -36,23 +36,23 @@ export function Gallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: Math.min(index * 0.03, 0.5) }}
-              className="group block break-inside-avoid relative overflow-hidden bg-charcoal rounded-sm"
+              className="group block relative aspect-square overflow-hidden bg-charcoal rounded-sm"
             >
-              <picture>
+              <picture className="absolute inset-0">
                 <source type="image/webp" srcSet={image.webp} />
                 <img
                   src={image.src}
-                  width={image.width}
-                  height={image.height}
+                  width={400}
+                  height={400}
                   alt={image.alt}
-                  className="w-full h-auto block"
+                  className="h-full w-full object-cover object-center"
                   loading="lazy"
                   decoding="async"
                 />
               </picture>
               <div className="absolute inset-0 bg-void/0 group-hover:bg-void/25 transition-colors duration-500 flex items-center justify-center pointer-events-none">
                 <InstagramIcon
-                  size={28}
+                  size={20}
                   className="text-cream opacity-0 group-hover:opacity-100 transition-opacity scale-90 group-hover:scale-100 duration-300 drop-shadow-md"
                 />
               </div>
