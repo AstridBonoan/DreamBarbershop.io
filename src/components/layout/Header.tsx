@@ -14,9 +14,9 @@ type NavLink =
 const NAV_LINKS: NavLink[] = [
   { label: 'Barbers', href: '/#barbers' },
   { label: 'Services', href: '/#services' },
-  { label: 'Gallery', to: '/gallery' },
   { label: 'About', href: '/#about' },
   { label: 'Reviews', href: '/#reviews' },
+  { label: 'Gallery', to: '/gallery' },
 ]
 
 function isRouteLink(link: NavLink): link is { label: string; to: string } {
