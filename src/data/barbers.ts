@@ -44,7 +44,7 @@ export const BARBERS: Barber[] = [
     specialty: 'Fades · Lineups · Everyday Cuts',
     bio: 'Respectful, skilled, and focused on getting you right before you walk out the door.',
     image:
-      'https://images.unsplash.com/photo-1599351431202-1e0f11278920?w=600&h=800&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&h=800&fit=crop&q=80',
     instagram: SITE.instagram,
     bookingUrl: SITE.bookingUrl,
   },
@@ -55,7 +55,7 @@ export const BARBERS: Barber[] = [
     specialty: 'Cuts · Styling · Professional Finish',
     bio: 'Experienced and professional — a favorite for clients who want a polished, confident look.',
     image:
-      'https://images.unsplash.com/photo-1585747860715-2ba37e808f54?w=600&h=800&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=800&fit=crop&q=80',
     instagram: SITE.instagram,
     bookingUrl: SITE.bookingUrl,
     acceptsAppointments: true,

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { BarberPhoto } from '../barbers/BarberPhoto'
 import { BARBERS, BARBERS_APPOINTMENT_NOTE } from '../../data/barbers'
 import { Button } from '../ui/Button'
 import { InstagramIcon } from '../ui/InstagramIcon'
@@ -29,12 +30,7 @@ export function FeaturedBarbers() {
               className="group shrink-0 w-[280px] md:w-auto snap-center"
             >
               <div className="relative overflow-hidden aspect-[3/4] bg-slate card-elevated">
-                <img
-                  src={barber.image}
-                  alt={barber.name}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
+                <BarberPhoto src={barber.image} name={barber.name} />
                 <div className="absolute inset-0 bg-linear-to-t from-void/90 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <span className="text-muted text-xs font-heading tracking-[0.2em] uppercase">
